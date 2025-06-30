@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: Repensando a Jornada de Trabalho Infinita</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 640px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-card {
+            background-color: #0052CC;
+            color: white;
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: #00A3BF;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="bg-[#F0F4F8]">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#1A202C] mb-4">A Jornada de Trabalho Infinita</h1>
+            <p class="text-lg md:text-xl text-[#4A5568] max-w-3xl mx-auto">As ferramentas digitais prometiam eficiência, mas criaram uma cultura de trabalho fragmentada e "sempre ativa". Dados revelam a anatomia de um dia de trabalho insustentável e como a IA pode nos ajudar a redesenhá-lo.</p>
+        </header>
+
+        <main class="space-y-12">
+
+            <section id="diagnosis">
+                <h2 class="text-3xl font-bold text-center text-[#1A202C] mb-8">Diagnóstico do Dia de Trabalho Moderno</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center text-center">
+                        <p class="text-7xl font-extrabold text-[#0052CC]">2 min</p>
+                        <p class="mt-2 text-lg text-[#4A5568]">É a frequência com que um funcionário é interrompido por notificações, e-mails ou reuniões. A concentração profunda se tornou uma miragem.</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center justify-center text-center">
+                        <div class="chart-container h-64 sm:h-auto">
+                            <canvas id="earlyStartChart"></canvas>
+                        </div>
+                        <p class="mt-4 text-lg text-[#4A5568]">O dia de trabalho começa reativamente, com <span class="font-bold">40%</span> dos funcionários online às 6h da manhã já revisando e-mails.</p>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-center mb-4 text-[#1A202C]">Sobrecarga de Comunicação</h3>
+                        <div class="chart-container h-64 sm:h-auto">
+                             <canvas id="communicationOverloadChart"></canvas>
+                        </div>
+                        <p class="mt-4 text-center text-lg text-[#4A5568]">Um dilúvio diário de <span class="font-bold">117 e-mails</span> e <span class="font-bold">153 mensagens</span> no Teams força uma constante troca de contexto.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="meeting-culture">
+                 <h2 class="text-3xl font-bold text-center text-[#1A202C] mb-8">A Cultura da Reunião Improdutiva</h2>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                     <div class="bg-white rounded-lg shadow-md p-6">
+                         <h3 class="text-xl font-bold text-center mb-4 text-[#1A202C]">Distribuição Semanal de Reuniões</h3>
+                         <div class="chart-container">
+                             <canvas id="meetingsByDayChart"></canvas>
+                         </div>
+                         <p class="mt-4 text-center text-lg text-[#4A5568]"><span class="font-bold">Metade</span> de todas as reuniões ocorrem nos picos de produtividade, com a Terça-feira sendo o dia mais sobrecarregado.</p>
+                     </div>
+                     <div class="space-y-6">
+                        <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                             <p class="text-5xl font-extrabold text-[#00A3BF]">57%</p>
+                             <p class="mt-2 text-lg text-[#4A5568]">das reuniões são <span class="font-bold">ad hoc</span>, sem planejamento prévio, contribuindo para a fragmentação.</p>
+                         </div>
+                         <div class="bg-white rounded-lg shadow-md p-6 text-center">
+                             <p class="text-5xl font-extrabold text-[#00A3BF]">+122%</p>
+                             <p class="mt-2 text-lg text-[#4A5568]">é o aumento nas edições de PowerPoint nos <span class="font-bold">10 minutos</span> que antecedem uma reunião, um sinal de preparação de última hora.</p>
+                         </div>
+                     </div>
+                 </div>
+            </section>
+            
+            <section id="consequences">
+                <h2 class="text-3xl font-bold text-center text-[#1A202C] mb-8">As Consequências: Caos e Esgotamento</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-center mb-4 text-[#1A202C]">Percepção de Caos no Trabalho</h3>
+                        <div class="chart-container">
+                            <canvas id="chaosFeelingChart"></canvas>
+                        </div>
+                        <p class="mt-4 text-center text-lg text-[#4A5568]">A sensação de trabalho caótico e fragmentado é uma realidade para a maioria, afetando tanto líderes quanto colaboradores.</p>
+                    </div>
+                     <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-bold text-center mb-4 text-[#1A202C]">Ritmo de Trabalho Insustentável</h3>
+                        <div class="chart-container">
+                            <canvas id="burnoutChart"></canvas>
+                        </div>
+                        <p class="mt-4 text-center text-lg text-[#4A5568]">O ritmo imposto nos últimos cinco anos se tornou impossível de acompanhar, empurrando o trabalho focado para noites e fins de semana.</p>
+                    </div>
+                </div>
+                 <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+                    <h3 class="text-xl font-bold text-center mb-4 text-[#1A202C]">O Paradoxo do Fim de Semana</h3>
+                    <p class="text-center text-lg text-[#4A5568] max-w-2xl mx-auto">Durante os fins de semana, o uso de <span class="font-bold">Word, Excel e PowerPoint supera o Teams</span>. Os funcionários não estão apenas trabalhando mais; estão usando seu tempo pessoal para encontrar o foco ininterrupto que é impossível de alcançar durante a semana de trabalho fragmentada.</p>
+                </div>
+            </section>
+            
+            <section id="solution">
+                <h2 class="text-3xl font-bold text-center text-[#1A202C] mb-2">A Solução: Redesenhar o Trabalho com IA</h2>
+                <p class="text-lg text-center text-[#4A5568] mb-8 max-w-3xl mx-auto">Em vez de acelerar um sistema quebrado, a IA oferece a alavanca para um novo ritmo de trabalho. A transformação começa com três pilares estratégicos.</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+                     <div class="kpi-card rounded-lg shadow-lg p-6 text-center flex-1 w-full md:w-auto">
+                        <h3 class="text-2xl font-bold mb-2">1. Regra 80/20 com IA</h3>
+                        <p class="text-base text-[#D1E0FF]">Automatize os 80% de tarefas de baixo impacto (relatórios, status) para liberar os humanos para os 20% de trabalho que geram valor real.</p>
+                    </div>
+                     <div class="flow-arrow transform md:-rotate-0">&rarr;</div>
+                    <div class="kpi-card rounded-lg shadow-lg p-6 text-center flex-1 w-full md:w-auto">
+                        <h3 class="text-2xl font-bold mb-2">2. Reorganizar com "Work Chart"</h3>
+                        <p class="text-base text-[#D1E0FF]">Troque organogramas estáticos por equipes ágeis e orientadas a resultados, onde a IA preenche lacunas de habilidades e acelera o progresso.</p>
+                    </div>
+                    <div class="flow-arrow transform md:-rotate-0">&rarr;</div>
+                     <div class="kpi-card rounded-lg shadow-lg p-6 text-center flex-1 w-full md:w-auto">
+                        <h3 class="text-2xl font-bold mb-2">3. Tornar-se "Chefe de Agentes"</h3>
+                        <p class="text-base text-[#D1E0FF]">Desenvolva a nova competência de orquestrar agentes de IA para pesquisa, análise e resumo, focando o talento humano em insights estratégicos.</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="text-center pt-8 border-t border-[#BCCCDC]">
+                 <h2 class="text-3xl font-black text-[#1A202C] mb-4">O Futuro é a "Frontier Firm"</h2>
+                 <p class="text-lg text-[#4A5568] max-w-3xl mx-auto">As organizações que redesenharem fundamentalmente seus processos em torno da colaboração Humano-IA não apenas sobreviverão, mas prosperarão, alcançando novos patamares de agilidade, inovação e criação de valor.</p>
+                 <p class="text-sm text-gray-500 mt-8">Fonte: Análise baseada no artigo "Repensando a jornada de trabalho infinita", Microsoft Source LATAM, 2025.</p>
+            </footer>
+
+        </main>
+    </div>
+
+    <script>
+        const brilliantBlues = {
+            deepBlue: '#0052CC',
+            cyan: '#00A3BF',
+            lightBlue: '#00B8D9',
+            mintGreen: '#79F2C0',
+            lightMint: '#99F2C0',
+            background: '#F0F4F8',
+            textDark: '#1A202C',
+            textLight: '#4A5568'
+        };
+
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + ' ' + words[i]).length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                } else {
+                    currentLine += ' ' + words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        };
+
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    backgroundColor: 'rgba(26, 32, 44, 0.8)',
+                    titleFont: { size: 14, weight: 'bold' },
+                    bodyFont: { size: 12 },
+                    padding: 12,
+                    cornerRadius: 6
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { color: brilliantBlues.textLight },
+                    grid: { color: '#E2E8F0' }
+                },
+                x: {
+                    ticks: { color: brilliantBlues.textLight },
+                    grid: { display: false }
+                }
+            }
+        };
+
+        const earlyStartCtx = document.getElementById('earlyStartChart').getContext('2d');
+        new Chart(earlyStartCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Revisando E-mails às 6h', 'Outras Atividades ou Offline'],
+                datasets: [{
+                    data: [40, 60],
+                    backgroundColor: [brilliantBlues.deepBlue, '#E2E8F0'],
+                    borderColor: brilliantBlues.background,
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                 responsive: true,
+                 maintainAspectRatio: false,
+                 cutout: '70%',
+                 plugins: {
+                     legend: { display: false },
+                     tooltip: {
+                         callbacks: {
+                             title: tooltipTitleCallback
+                         }
+                     }
+                 }
+            }
+        });
+
+        const communicationOverloadCtx = document.getElementById('communicationOverloadChart').getContext('2d');
+        new Chart(communicationOverloadCtx, {
+            type: 'bar',
+            data: {
+                labels: ['E-mails por Dia', 'Mensagens Teams por Dia'],
+                datasets: [{
+                    label: 'Volume Médio Diário',
+                    data: [117, 153],
+                    backgroundColor: [brilliantBlues.cyan, brilliantBlues.lightBlue],
+                    borderRadius: 4
+                }]
+            },
+            options: defaultChartOptions
+        });
+        
+        const meetingsByDayCtx = document.getElementById('meetingsByDayChart').getContext('2d');
+        new Chart(meetingsByDayCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex'],
+                datasets: [{
+                    label: '% de Reuniões',
+                    data: [20, 23, 21, 20, 16], 
+                    backgroundColor: [brilliantBlues.lightBlue, brilliantBlues.deepBlue, brilliantBlues.lightBlue, brilliantBlues.lightBlue, brilliantBlues.cyan],
+                    borderRadius: 4
+                }]
+            },
+            options: { ...defaultChartOptions, indexAxis: 'x' }
+        });
+
+        const chaosFeelingCtx = document.getElementById('chaosFeelingChart').getContext('2d');
+        new Chart(chaosFeelingCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Líderes que se sentem caóticos', 'Colaboradores que se sentem caóticos'],
+                datasets: [{
+                    data: [52, 48],
+                    backgroundColor: [brilliantBlues.deepBlue, brilliantBlues.cyan],
+                    borderColor: brilliantBlues.background,
+                    borderWidth: 4
+                }]
+            },
+             options: {
+                 responsive: true,
+                 maintainAspectRatio: false,
+                 plugins: {
+                     legend: { 
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            color: brilliantBlues.textDark,
+                            font: { size: 12 }
+                        }
+                     },
+                     tooltip: {
+                         callbacks: {
+                             title: tooltipTitleCallback
+                         }
+                     }
+                 }
+            }
+        });
+        
+        const burnoutCtx = document.getElementById('burnoutChart').getContext('2d');
+        new Chart(burnoutCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Ritmo tornou-se impossível', 'Ritmo gerenciável'],
+                datasets: [{
+                    data: [33.3, 66.7],
+                    backgroundColor: [brilliantBlues.cyan, '#E2E8F0'],
+                    borderColor: brilliantBlues.background,
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                 responsive: true,
+                 maintainAspectRatio: false,
+                 cutout: '70%',
+                 plugins: {
+                     legend: { display: false },
+                     tooltip: {
+                         callbacks: {
+                             title: tooltipTitleCallback
+                         }
+                     }
+                 }
+            }
+        });
+    </script>
+</body>
+</html>
