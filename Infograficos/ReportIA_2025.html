@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico: O Futuro da Inteligência Artificial (2025)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F3F4F6;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .kpi-value {
+            font-weight: 900;
+            color: #3B82F6;
+        }
+        .section-title {
+            font-weight: 700;
+            color: #111827;
+        }
+        .section-subtitle {
+            color: #4B5563;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            padding: 1.5rem;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 text-center">Relatório Global de IA (2025): Análise Estratégica</h1>
+            <p class="text-center text-gray-600 mt-2">Insights visuais para formadores de opinião sobre o futuro da Inteligência Artificial.</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="imperativo" class="mb-16">
+            <h2 class="text-3xl section-title text-center mb-2">O Imperativo da IA</h2>
+            <p class="text-lg section-subtitle text-center mb-8 max-w-3xl mx-auto">A Inteligência Artificial não é mais uma tecnologia emergente, mas o principal motor da economia digital global. A sua adoção generalizada e o impacto econômico massivo exigem atenção estratégica imediata.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-gray-700">Economia Digital</h3>
+                    <p class="text-5xl kpi-value mt-2">$16T</p>
+                    <p class="text-gray-500 mt-2">Valor atual aproximado do PIB global impulsionado pela IA.</p>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-gray-700">Mercado de IA</h3>
+                    <p class="text-5xl kpi-value mt-2">&gt;$1T</p>
+                    <p class="text-gray-500 mt-2">Projeção de mercado até 2030, indicando um crescimento exponencial.</p>
+                </div>
+                <div class="card flex flex-col items-center justify-center">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Prioridade nos Negócios</h3>
+                    <div class="chart-container h-48 w-48">
+                        <canvas id="businessPriorityChart"></canvas>
+                    </div>
+                     <p class="text-gray-500 mt-4">Das empresas identificam a IA como prioridade máxima em seus planos de negócios.</p>
+                </div>
+                <div class="card flex flex-col items-center justify-center">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Adoção Corporativa</h3>
+                    <div class="chart-container h-48 w-48">
+                        <canvas id="corporateAdoptionChart"></canvas>
+                    </div>
+                    <p class="text-gray-500 mt-4">Das organizações já utilizam IA em pelo menos uma função de negócio.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="escala" class="mb-16">
+            <h2 class="text-3xl section-title text-center mb-2">A Nova Escala de Poder Computacional</h2>
+            <p class="text-lg section-subtitle text-center mb-8 max-w-3xl mx-auto">O avanço da IA exige um salto quântico em poder de processamento. A era das "Fábricas de IA" chegou, redefinindo a infraestrutura e a geopolítica da tecnologia com um custo e consumo de energia sem precedentes.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Evolução do Poder de Processamento dos Chips de IA</h3>
+                    <p class="text-gray-600 mb-4">A demanda por desempenho está crescendo exponencialmente. O gráfico abaixo compara o poder de processamento máximo por chip em diferentes gerações, medido em operações de ponto flutuante por segundo.</p>
+                    <div class="chart-container">
+                        <canvas id="chipPowerChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Concentração da Infraestrutura Global</h3>
+                     <p class="text-gray-600 mb-4">A infraestrutura digital crítica está massivamente concentrada em poucas nações, criando uma clara divisão digital. Os 15 principais países detêm mais de 80% da capacidade global de data centers.</p>
+                    <div class="chart-container">
+                        <canvas id="datacenterFootprintChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="evolucao" class="mb-16">
+            <h2 class="text-3xl section-title text-center mb-2">A Evolução da Inteligência: De Assistentes a Agentes</h2>
+            <p class="text-lg section-subtitle text-center mb-8 max-w-3xl mx-auto">A IA está evoluindo de ferramentas que respondem a comandos (IA Generativa) para sistemas autônomos que executam tarefas complexas (IA Agêntica). Esta transição transformará fundamentalmente o trabalho, a produtividade e a interação humano-máquina.</p>
+            <div class="card md:col-span-2">
+                <h3 class="text-xl font-semibold text-gray-700 text-center mb-6">Roteiro da Adoção da IA Agêntica (2024-2029)</h3>
+                <div class="relative">
+                    <div class="border-l-4 border-blue-500 absolute h-full top-0 left-1/2 -ml-0.5"></div>
+                    <div class="mb-8 flex justify-between items-center w-full">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-blue-500 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
+                        </div>
+                        <div class="order-1 bg-blue-100 rounded-lg shadow-xl w-5/12 px-6 py-4">
+                            <p class="font-bold text-blue-800">Final de 2024 - Fase Fundamental</p>
+                            <p class="text-sm text-gray-700">Lançamento de plataformas iniciais com autonomia limitada.</p>
+                        </div>
+                    </div>
+                    <div class="mb-8 flex justify-between flex-row-reverse items-center w-full">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-blue-500 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto text-white font-semibold text-lg">2</h1>
+                        </div>
+                        <div class="order-1 bg-green-100 rounded-lg shadow-xl w-5/12 px-6 py-4">
+                            <p class="font-bold text-green-800">Início de 2025 - Fase de Expansão</p>
+                            <p class="text-sm text-gray-700">Grandes empresas de tecnologia lançam plataformas de agentes para consumidores e negócios.</p>
+                        </div>
+                    </div>
+                    <div class="mb-8 flex justify-between items-center w-full">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-blue-500 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto font-semibold text-lg text-white">3</h1>
+                        </div>
+                        <div class="order-1 bg-orange-100 rounded-lg shadow-xl w-5/12 px-6 py-4">
+                            <p class="font-bold text-orange-800">Meados de 2025 - Fase de Transformação</p>
+                            <p class="text-sm text-gray-700">Adoção empresarial acelera, orquestração de agentes torna-se prática comum.</p>
+                        </div>
+                    </div>
+                    <div class="mb-8 flex justify-between flex-row-reverse items-center w-full">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-blue-500 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto text-white font-semibold text-lg">4</h1>
+                        </div>
+                        <div class="order-1 bg-purple-100 rounded-lg shadow-xl w-5/12 px-6 py-4">
+                            <p class="font-bold text-purple-800">2026-2029 - Fase de Maturidade</p>
+                            <p class="text-sm text-gray-700">Agentes autônomos gerenciam a maioria dos processos rotineiros com supervisão mínima, gerando até 30% de redução de custos operacionais.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="fronteiras" class="mb-16">
+            <h2 class="text-3xl section-title text-center mb-2">Fronteiras Físicas e Quânticas</h2>
+            <p class="text-lg section-subtitle text-center mb-8 max-w-3xl mx-auto">A IA está transcendendo o digital. Robôs humanoides entram no mercado de trabalho, enquanto a computação quântica promete uma revolução a longo prazo, exigindo preparação estratégica imediata.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Crescimento do Mercado de Robôs Humanoides</h3>
+                    <p class="text-gray-600 mb-4">A manifestação física da IA está se tornando uma realidade comercial. O mercado de robôs humanoides está projetado para mais do que quadruplicar até 2030, impulsionando a automação na manufatura, logística e saúde.</p>
+                    <div class="chart-container">
+                        <canvas id="humanoidRobotMarketChart"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="text-xl font-semibold text-gray-700 mb-4">Governança e Sustentabilidade</h3>
+                    <p class="text-gray-600 mb-2">O rápido avanço da IA traz consigo responsabilidades críticas. A governança e a sustentabilidade são pilares para um futuro de IA seguro e equitativo.</p>
+                     <div class="space-y-4 mt-4">
+                        <div class="bg-red-100 p-4 rounded-lg">
+                            <p class="font-bold text-red-800">⚖️ Soberania e Regulação</p>
+                            <p class="text-sm text-red-700">Nações estabelecem reservas de computação soberana. A Lei de IA da UE e a Ordem Executiva dos EUA sinalizam uma era de regulamentação crescente e potencial fragmentação global.</p>
+                        </div>
+                        <div class="bg-green-100 p-4 rounded-lg">
+                            <p class="font-bold text-green-800">🌍 Pegada de Carbono</p>
+                            <p class="text-sm text-green-700">Data centers já consomem 2.1% da eletricidade global (268M de toneladas de CO2). Prevê-se que esse consumo aumente em até uma ordem de magnitude na próxima década, tornando a "IA Verde" uma necessidade urgente.</p>
+                        </div>
+                        <div class="bg-purple-100 p-4 rounded-lg">
+                            <p class="font-bold text-purple-800">⚛️ Ameaça Quântica</p>
+                            <p class="text-sm text-purple-700">A computação quântica (horizonte 2035+) poderá quebrar a criptografia atual. A transição para algoritmos resistentes a quantum já começou e é vital para a segurança de dados a longo prazo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="soberania" class="mb-16">
+            <h2 class="text-3xl section-title text-center mb-2">Construindo a Soberania Digital Nacional</h2>
+            <p class="text-lg section-subtitle text-center mb-8 max-w-3xl mx-auto">Para competir na economia digital, as nações precisam de uma estratégia de IA deliberada, focada em infraestrutura acessível e, crucialmente, no desenvolvimento de capital humano.</p>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-3 card">
+                     <h3 class="text-xl font-semibold text-gray-700 mb-4">Modelos de Centros de IA para Todas as Nações</h3>
+                     <p class="text-gray-600 mb-6">A IDCA propõe um modelo escalonado que permite a nações com diferentes capacidades econômicas construir sua própria infraestrutura de IA. Desde centros regionais para análise de dados até grandes instalações para pesquisa de ponta, há um caminho para todos.</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">Nível</th>
+                                    <th scope="col" class="px-6 py-3">Energia (MW)</th>
+                                    <th scope="col" class="px-6 py-3">CapEx/MW</th>
+                                    <th scope="col" class="px-6 py-3">Capacidade Primária</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Pequeno</th>
+                                    <td class="px-6 py-4">1-5</td>
+                                    <td class="px-6 py-4">$7-10M</td>
+                                    <td class="px-6 py-4">Inferência, análise regional, serviços governamentais</td>
+                                </tr>
+                                <tr class="bg-gray-50 border-b">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Médio</th>
+                                    <td class="px-6 py-4">5-20</td>
+                                    <td class="px-6 py-4">$6-8M</td>
+                                    <td class="px-6 py-4">Modelagem e treinamento de propósito geral</td>
+                                </tr>
+                                <tr class="bg-white">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Grande</th>
+                                    <td class="px-6 py-4">20-100+</td>
+                                    <td class="px-6 py-4">$5-7M</td>
+                                    <td class="px-6 py-4">Pesquisa de defesa, treinamento de grandes modelos</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="lg:col-span-2 card text-center flex flex-col justify-center items-center">
+                    <span class="text-6xl mb-4">👨‍💻</span>
+                    <h3 class="text-xl font-semibold text-gray-700">O Déficit de Talentos</h3>
+                    <p class="text-6xl kpi-value mt-2">100M</p>
+                    <p class="text-gray-500 mt-2">É o número de novos empregos em TI necessários globalmente até 2030 para sustentar a economia digital. O investimento em capital humano é tão crítico quanto o investimento em hardware.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusao">
+            <h2 class="text-3xl section-title text-center mb-2">Recomendações Estratégicas</h2>
+             <p class="text-lg section-subtitle text-center mb-8 max-w-3xl mx-auto">Para que uma nação prospere na era da IA, a ação deve ser decisiva e multifacetada. A seguir, as principais prioridades para formadores de opinião e líderes governamentais.</p>
+            <div class="card max-w-4xl mx-auto">
+                <ol class="space-y-4">
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-500 text-white font-bold mr-4">1</span>
+                        <div>
+                            <h4 class="font-bold">Desenvolver uma Visão Nacional de IA</h4>
+                            <p class="text-gray-600">Criar um roteiro único alinhado às prioridades e recursos do país.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-500 text-white font-bold mr-4">2</span>
+                        <div>
+                            <h4 class="font-bold">Priorizar Capital Humano</h4>
+                            <p class="text-gray-600">Investir massivamente em educação e treinamento para preencher o déficit de 100 milhões de empregos em TI.</p>
+                        </div>
+                    </li>
+                     <li class="flex items-start">
+                        <span class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-500 text-white font-bold mr-4">3</span>
+                        <div>
+                            <h4 class="font-bold">Adotar Infraestrutura Sustentável e Adaptada</h4>
+                            <p class="text-gray-600">Focar em centros de IA energeticamente eficientes e de tamanho apropriado para as necessidades nacionais, explorando modelos de IA como Serviço.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-500 text-white font-bold mr-4">4</span>
+                        <div>
+                            <h4 class="font-bold">Liderar em Governança e Ética</h4>
+                            <p class="text-gray-600">Desenvolver proativamente uma regulamentação que garanta privacidade, segurança e uso responsável, em vez de reagir a crises.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="flex-shrink-0 flex items-center justify-center h-8 w-8 rounded-full bg-blue-500 text-white font-bold mr-4">5</span>
+                        <div>
+                            <h4 class="font-bold">Fomentar Parcerias Estratégicas</h4>
+                            <p class="text-gray-600">Incentivar a colaboração público-privada e internacional para financiar projetos e compartilhar conhecimento.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="text-center py-6 bg-gray-800 text-gray-400 text-sm">
+        <p>Infográfico gerado com base no Global Artificial Intelligence Report (2025) da IDCA.</p>
+        <p>Este é um artefato de visualização de dados sem afiliação oficial com a fonte.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const FONT_COLOR = '#111827';
+            const GRID_COLOR = '#E5E7EB';
+            const PALETTE = {
+                blue: '#3B82F6',
+                green: '#10B981',
+                orange: '#F97316',
+                purple: '#8B5CF6',
+                red: '#EF4444',
+                gray: '#6B7280'
+            };
+
+            const tooltipPluginConfig = {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                }
+            };
+            
+            function wrapLabel(str, maxLen = 16) {
+                if (str.length <= maxLen) return str;
+                const words = str.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > maxLen) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                });
+                if (currentLine) lines.push(currentLine.trim());
+                return lines;
+            }
+
+            const businessPriorityCtx = document.getElementById('businessPriorityChart');
+            if(businessPriorityCtx) {
+                new Chart(businessPriorityCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Prioridade Máxima', 'Outros'],
+                        datasets: [{
+                            label: '% de Empresas',
+                            data: [87, 13],
+                            backgroundColor: [PALETTE.blue, '#E5E7EB'],
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '70%',
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                             tooltip: tooltipPluginConfig
+                        }
+                    }
+                });
+            }
+
+            const corporateAdoptionCtx = document.getElementById('corporateAdoptionChart');
+            if(corporateAdoptionCtx) {
+                 new Chart(corporateAdoptionCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Utilizam IA', 'Não Utilizam'],
+                        datasets: [{
+                            label: '% de Organizações',
+                            data: [76, 24],
+                            backgroundColor: [PALETTE.green, '#E5E7EB'],
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '70%',
+                        plugins: {
+                            legend: {
+                                display: false
+                            },
+                             tooltip: tooltipPluginConfig
+                        }
+                    }
+                });
+            }
+            
+            const chipPowerCtx = document.getElementById('chipPowerChart');
+            if(chipPowerCtx) {
+                new Chart(chipPowerCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Nvidia H100 (2023)', 'Nvidia Blackwell (2025)', 'Nvidia Ruby (2027)'],
+                        datasets: [{
+                            label: 'Poder Máximo (Exaflops)',
+                            data: [0.001, 0.0055, 15],
+                            backgroundColor: [PALETTE.gray, PALETTE.blue, PALETTE.purple],
+                            borderColor: [PALETTE.gray, PALETTE.blue, PALETTE.purple],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        scales: {
+                           x: {
+                                type: 'logarithmic',
+                                title: { display: true, text: 'Exaflops (Escala Logarítmica)', color: FONT_COLOR},
+                                grid: { color: GRID_COLOR },
+                                ticks: { color: FONT_COLOR }
+                           },
+                           y: {
+                                grid: { display: false },
+                                ticks: { color: FONT_COLOR }
+                           }
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                             tooltip: tooltipPluginConfig
+                        }
+                    }
+                });
+            }
+            
+            const datacenterFootprintCtx = document.getElementById('datacenterFootprintChart');
+            if(datacenterFootprintCtx) {
+                new Chart(datacenterFootprintCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['EUA', 'China', 'Alemanha', 'Japão', 'Reino Unido', wrapLabel('Resto do Mundo')],
+                        datasets: [{
+                            label: 'Pegada Global de Data Centers (%)',
+                            data: [40, 9, 7.5, 6, 5, 32.5],
+                            backgroundColor: [PALETTE.blue, PALETTE.red, PALETTE.orange, PALETTE.purple, PALETTE.green, PALETTE.gray],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                         scales: {
+                           x: {
+                                title: { display: true, text: '% do Total Global', color: FONT_COLOR },
+                                grid: { color: GRID_COLOR },
+                                ticks: { color: FONT_COLOR }
+                           },
+                           y: {
+                                grid: { display: false },
+                                ticks: { color: FONT_COLOR }
+                           }
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: tooltipPluginConfig
+                        }
+                    }
+                });
+            }
+
+            const humanoidRobotMarketCtx = document.getElementById('humanoidRobotMarketChart');
+            if(humanoidRobotMarketCtx) {
+                new Chart(humanoidRobotMarketCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2025', '2026', '2027', '2028', '2029', '2030'],
+                        datasets: [{
+                            label: 'Mercado (em Bilhões de USD)',
+                            data: [3.9, 5.2, 7.0, 9.5, 12.8, 17.3],
+                            fill: true,
+                            backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                            borderColor: PALETTE.blue,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                         scales: {
+                           y: {
+                                beginAtZero: true,
+                                title: { display: true, text: 'Bilhões de USD', color: FONT_COLOR },
+                                grid: { color: GRID_COLOR },
+                                ticks: { color: FONT_COLOR }
+                           },
+                           x: {
+                                grid: { display: false },
+                                ticks: { color: FONT_COLOR }
+                           }
+                        },
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: tooltipPluginConfig
+                        }
+                    }
+                });
+            }
+
+        });
+    </script>
+</body>
+</html>
