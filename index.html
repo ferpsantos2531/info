@@ -26,12 +26,43 @@
             outline: none;
             box-shadow: 0 0 0 3px rgba(52, 144, 220, 0.4); /* Anel de foco azul */
         }
+
+        /* Animação de fade-in para os cartões */
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
-    <div class="header-gradient py-12 px-4 sm:px-6 lg:px-8 rounded-b-xl shadow-lg">
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-white text-center tracking-tight">
+    <div class="header-gradient py-12 px-4 sm:px-6 lg:px-8 rounded-b-xl shadow-lg relative">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-white text-center tracking-tight mb-4 flex justify-center items-center">
             📚 Ambiente de Estudo - Fernando Santos
+            <!-- LinkedIn Icon and Link -->
+            <a href="https://www.linkedin.com/in/ferpsantos/" target="_blank" aria-label="Perfil do LinkedIn de Fernando Santos" class="text-white hover:text-gray-200 transition-colors duration-200 ml-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-linkedin">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+            </a>
+            <!-- WhatsApp Icon and Link -->
+            <a href="https://wa.me/5531996080641" target="_blank" aria-label="Link para o WhatsApp de Fernando Santos" class="text-white hover:text-gray-200 transition-colors duration-200 ml-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-whatsapp">
+                    <path d="M21 12.79A9 9 0 1 1 12.21 3 9 9 0 0 1 21 12.79z"></path>
+                    <path d="M16.6 15.4c-.1-.1-.3-.2-.5-.3s-.4-.2-.6-.2c-.2 0-.4 0-.6.1s-.3.2-.4.3c-.1.1-.2.3-.3.4s-.1.2-.2.4c-.1.2-.1.3-.1.5s0 .3.1.5c.1.1.2.2.3.3s.2.2.4.3c.2.1.4.1.6.1s.4 0 .6-.1c.2-.1.4-.2.5-.3s.3-.2.4-.4c.1-.1.2-.2.2-.4s.1-.3.1-.5c0-.2-.1-.3-.1-.5zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-1.8-4.2c-.1-.1-.2-.2-.3-.2s-.2-.1-.3-.1c-.1 0-.2 0-.3.1s-.2.1-.2.2c-.1.1-.1.2-.1.3s0 .2.1.3c.1.1.1.2.2.2s.2.1.3.1c.1 0 .2 0 .3-.1s.2-.1.3-.2c-.1-.1-.1-.2-.1-.3s0-.2-.1-.3z"></path>
+                </svg>
+            </a>
         </h1>
     </div>
 
@@ -48,28 +79,57 @@
                     </svg>
                 </div>
                 <input type="text" id="search-input" placeholder="Pesquisar por nome do estudo ou infográfico..."
-                       class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg transition duration-200 ease-in-out">
+                       class="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg transition duration-200 ease-in-out"
+                       aria-label="Pesquisar estudos e infográficos">
+                <button id="clear-search" class="absolute inset-y-0 right-0 pr-3 flex items-center" aria-label="Limpar pesquisa">
+                    <!-- Ícone de Limpar (SVG 'x') -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 hover:text-gray-700 cursor-pointer">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div id="no-results-message" class="text-center text-gray-600 mt-4 hidden">
+                Nenhum estudo ou infográfico encontrado para sua pesquisa.
             </div>
         </div>
 
-        <section class="mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-400 pb-2">Estudos</h2>
+        <section class="mb-12" aria-labelledby="estudos-heading">
+            <h2 id="estudos-heading" class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-400 pb-2">Estudos</h2>
             <div class="cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Cartão 1 -->
                 <div class="card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 ease-in-out card-hover">
-                    <div class="text-5xl mb-4 text-blue-500">📄</div>
+                    <!-- Ícone de Documento atualizado para um SVG mais estilizado -->
+                    <div class="text-5xl mb-4 text-blue-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <line x1="10" y1="9" x2="8" y2="9"></line>
+                        </svg>
+                    </div>
                     <a href="Estudos/ReportIA2025.html" target="_blank" class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">Report IA 2025</a>
                 </div>
                 <!-- Cartão 2 -->
                 <div class="card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 ease-in-out card-hover">
-                    <div class="text-5xl mb-4 text-blue-500">📄</div>
+                    <!-- Ícone de Documento atualizado para um SVG mais estilizado -->
+                    <div class="text-5xl mb-4 text-blue-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
+                            <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                            <line x1="10" y1="9" x2="8" y2="9"></line>
+                        </svg>
+                    </div>
                     <a href="estudo/estudo_exemplo.html" target="_blank" class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">Estudo Exemplo</a>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-400 pb-2">Infográficos</h2>
+        <section aria-labelledby="infograficos-heading">
+            <h2 id="infograficos-heading" class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-400 pb-2">Infográficos</h2>
             <div class="cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Cartão 1 -->
                 <div class="card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 ease-in-out card-hover">
@@ -82,7 +142,7 @@
                             <path d="M4 20h16"></path>
                         </svg>
                     </div>
-                    <a href="https://ferpsantos2531.github.io/info/Infograficos/Empresa_fronteira.html" target="_blank" class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">Empresa Fronteira</a>
+                    <a href="https://www.linkedin.com/in/ferpsantos/" target="_blank" class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">Empresa Fronteira</a>
                 </div>
                 <!-- Cartão 2 -->
                 <div class="card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 ease-in-out card-hover">
@@ -117,22 +177,54 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('search-input');
-            const cards = document.querySelectorAll('.card'); // Seleciona todos os elementos do cartão
+            const clearSearchButton = document.getElementById('clear-search');
+            const cards = document.querySelectorAll('.card');
+            const noResultsMessage = document.getElementById('no-results-message');
 
-            searchInput.addEventListener('keyup', function() {
-                const searchTerm = searchInput.value.toLowerCase(); // Obtém o termo de pesquisa e converte para minúsculas
+            function filterCards() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                let visibleCardsCount = 0;
 
                 cards.forEach(card => {
-                    // Obtém o conteúdo de texto da tag de âncora dentro do cartão
                     const cardText = card.querySelector('a').textContent.toLowerCase();
-
                     if (cardText.includes(searchTerm)) {
-                        card.style.display = 'block'; // Mostra o cartão
+                        card.style.display = 'block';
+                        // Adiciona a classe de animação apenas se o cartão for visível e não a tiver
+                        if (!card.classList.contains('fade-in')) {
+                            card.classList.add('fade-in');
+                        }
+                        visibleCardsCount++;
                     } else {
-                        card.style.display = 'none'; // Oculta o cartão
+                        card.style.display = 'none';
+                        // Remove a classe de animação quando o cartão é ocultado
+                        card.classList.remove('fade-in');
                     }
                 });
+
+                if (visibleCardsCount === 0 && searchTerm !== '') {
+                    noResultsMessage.classList.remove('hidden');
+                } else {
+                    noResultsMessage.classList.add('hidden');
+                }
+
+                // Mostra ou esconde o botão de limpar pesquisa
+                if (searchTerm.length > 0) {
+                    clearSearchButton.style.display = 'flex'; // Use flex para centralizar o SVG
+                } else {
+                    clearSearchButton.style.display = 'none';
+                }
+            }
+
+            searchInput.addEventListener('keyup', filterCards);
+
+            clearSearchButton.addEventListener('click', function() {
+                searchInput.value = ''; // Limpa o campo de pesquisa
+                filterCards(); // Filtra para mostrar todos os cartões novamente
+                searchInput.focus(); // Coloca o foco de volta no campo de pesquisa
             });
+
+            // Inicializa o estado do botão de limpar pesquisa ao carregar a página
+            filterCards();
         });
     </script>
 </body>
