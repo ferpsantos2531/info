@@ -11,6 +11,7 @@
         body {
             font-family: 'Inter', sans-serif; /* Usando a fonte Inter */
             background-color: #f0f2f5; /* Fundo mais claro */
+            scroll-behavior: smooth; /* Adiciona rolagem suave para links internos */
         }
         /* Gradiente para o cabeçalho */
         .header-gradient {
@@ -42,6 +43,31 @@
                 transform: translateY(0);
             }
         }
+
+        /* Estilos para o botão "Voltar ao Topo" */
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #2b6cb0; /* Azul do gradiente */
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 9999px; /* Totalmente arredondado */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: none; /* Escondido por padrão */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            z-index: 1000; /* Garante que fique acima de outros elementos */
+        }
+        #back-to-top:hover {
+            background-color: #38b2ac; /* Cor de hover do gradiente */
+            transform: translateY(-3px);
+        }
+
+        /* Estilos para as linhas da tabela no hover */
+        .table-row-hover:hover {
+            background-color: #f9fafb; /* Um cinza muito claro no hover */
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -53,7 +79,12 @@
         <!-- Os ícones de redes sociais foram removidos daqui e movidos para o rodapé -->
     </div>
 
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Texto Introdutório -->
+        <p class="text-lg text-gray-700 text-center max-w-3xl mx-auto mb-10 leading-relaxed">
+            Bem-vindo ao seu ambiente de estudo pessoal! Aqui você encontrará uma coleção organizada de estudos, infográficos e vídeos, todos gerados com o auxílio de Inteligência Artificial para enriquecer seu conhecimento. Utilize a barra de pesquisa abaixo para encontrar rapidamente o conteúdo desejado.
+        </p>
+
         <!-- Barra de Pesquisa -->
         <div class="mb-10 max-w-2xl mx-auto">
             <label for="search-input" class="sr-only">Pesquisar conteúdo</label>
@@ -65,9 +96,9 @@
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </div>
-                <input type="text" id="search-input" placeholder="Pesquisar por nome do estudo ou infográfico..."
+                <input type="text" id="search-input" placeholder="Pesquisar por nome do estudo, infográfico, vídeo ou ferramenta..."
                        class="block w-full pl-10 pr-10 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-lg transition duration-200 ease-in-out"
-                       aria-label="Pesquisar estudos e infográficos">
+                       aria-label="Pesquisar estudos, infográficos, vídeos e ferramentas">
                 <button id="clear-search" class="absolute inset-y-0 right-0 pr-3 flex items-center" aria-label="Limpar pesquisa">
                     <!-- Ícone de Limpar (SVG 'x') -->
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-500 hover:text-gray-700 cursor-pointer">
@@ -77,7 +108,7 @@
                 </button>
             </div>
             <div id="no-results-message" class="text-center text-gray-600 mt-4 hidden">
-                Nenhum estudo ou infográfico encontrado para sua pesquisa.
+                Nenhum resultado encontrado para sua pesquisa.
             </div>
         </div>
 
@@ -115,7 +146,7 @@
             </div>
         </section>
 
-        <section aria-labelledby="infograficos-heading">
+        <section class="mb-12" aria-labelledby="infograficos-heading">
             <h2 id="infograficos-heading" class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-400 pb-2">Infográficos</h2>
             <div class="cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Cartão 1 -->
@@ -159,6 +190,117 @@
                 </div>
             </div>
         </section>
+
+        <!-- Nova Seção de Vídeos -->
+        <section class="mb-12" aria-labelledby="videos-heading">
+            <h2 id="videos-heading" class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-400 pb-2">Vídeos</h2>
+            <div class="cards grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cartão de Vídeo de Exemplo -->
+                <div class="card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 ease-in-out card-hover">
+                    <!-- Ícone de Vídeo (SVG de play) -->
+                    <div class="text-5xl mb-4 text-blue-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">Vídeo de Exemplo 1</a>
+                    <p class="text-gray-500 text-sm mt-2">Um vídeo interessante sobre o tema.</p>
+                </div>
+                <!-- Você pode adicionar mais cartões de vídeo aqui -->
+                <div class="card bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 ease-in-out card-hover">
+                    <div class="text-5xl mb-4 text-blue-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=another_video_id" target="_blank" class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">Vídeo de Exemplo 2</a>
+                    <p class="text-gray-500 text-sm mt-2">Outro vídeo relevante para o estudo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nova Seção de Soluções Úteis (Tabela) -->
+        <section aria-labelledby="solucoes-uteis-heading">
+            <h2 id="solucoes-uteis-heading" class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-400 pb-2">Soluções Úteis</h2>
+            <div class="overflow-x-auto bg-white rounded-xl shadow-lg">
+                <table id="useful-solutions-table" class="min-w-full divide-y divide-gray-200 border-collapse">
+                    <thead class="bg-blue-500 text-white">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider rounded-tl-xl">Nome da Ferramenta</th>
+                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Descrição</th>
+                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Pago?</th>
+                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Link</th>
+                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider rounded-tr-xl">Classificação (Finalidade)</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">DALL·E 3 (OpenAI)</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Geração de imagens por IA a partir de texto, altamente realista e criativa</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Pago (via ChatGPT Plus)</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://openai.com/dall-e-3" target="_blank" class="block w-full h-full">DALL·E</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Imagem</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Stable Diffusion</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Ferramenta open source para gerar imagens por IA, muito usada em projetos personalizados</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Gratuito / Pago (cloud)</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://stability.ai/stable-diffusion" target="_blank" class="block w-full h-full">Stable Diffusion</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Imagem</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Midjourney</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Foco em arte digital criativa e visual impactante, via Discord</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Pago</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.midjourney.com/" target="_blank" class="block w-full h-full">Midjourney</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Imagem</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">LivePlan</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Criação de planos de negócio com modelos e simulações financeiras</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Pago</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.liveplan.com/" target="_blank" class="block w-full h-full">LivePlan</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Plano de Negócio</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Enloop</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Gera automaticamente planos de negócios e análises financeiras</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Gratuito (limitado) / Pago</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.enloop.com/" target="_blank" class="block w-full h-full">Enloop</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Plano de Negócio</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Bizplan</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Plataforma visual para desenhar e acompanhar planos de negócios</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Pago</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.bizplan.com/" target="_blank" class="block w-full h-full">Bizplan</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Plano de Negócio</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">MindMeister</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Ferramenta online de mapas mentais colaborativos</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Gratuito (limitado) / Pago</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.mindmeister.com/" target="_blank" class="block w-full h-full">MindMeister</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Mapas Mentais</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">XMind</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Ferramenta robusta para criação de mapas mentais com foco em produtividade</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Gratuito (básico) / Pago</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.xmind.net/" target="_blank" class="block w-full h-full">XMind</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Mapas Mentais</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Coggle</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Criação simples e visual de mapas mentais em tempo real</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Gratuito (limitado) / Pago</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://coggle.it/" target="_blank" class="block w-full h-full">Coggle</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Mapas Mentais</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
     </div>
 
     <footer class="mt-12 py-6 text-center text-gray-600 text-sm bg-gray-100 rounded-t-xl shadow-inner">
@@ -174,63 +316,107 @@
             <!-- WhatsApp Icon and Link -->
             <a href="https://wa.me/5531996080641" target="_blank" aria-label="Link para o WhatsApp de Fernando Santos" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-whatsapp">
-                    <path d="M12.047 2.001c-5.524 0-10 4.477-10 10 0 1.956.567 3.805 1.554 5.412l-1.61 5.881 6.027-1.577c1.583.867 3.376 1.332 5.029 1.332 5.523 0 10-4.477 10-10 0-5.524-4.477-10-10-10zM17.65 15.65c-.1-.1-.3-.2-.5-.3s-.4-.2-.6-.2c-.2 0-.4 0-.6.1s-.3.2-.4.3c-.1.1-.2.3-.3.4s-.1.2-.2.4c-.1.2-.1.3-.1.5s0 .3.1.5c.1.1.2.2.3.3s.2.2.4.3c.2.1.4.1.6.1s.4 0 .6-.1c.2-.1.4-.2.5-.3s.3-.2.4-.4c.1-.1.2-.2.2-.4s.1-.3.1-.5c0-.2-.1-.3-.1-.5zM12.047 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-1.8-4.2c-.1-.1-.2-.2-.3-.2s-.2-.1-.3-.1c-.1 0-.2 0-.3.1s-.2.1-.2.2c-.1.1-.1.2-.1.3s0 .2.1.3c.1.1.1.2.2.2s.2.1.3.1c.1 0 .2 0 .3-.1s.2-.1.3-.2c-.1-.1-.1-.2-.1-.3s0-.2-.1-.3z"></path>
+                    <path d="M12.047 2.001c-5.524 0-10 4.477-10 10 0 1.956.567 3.805 1.554 5.412l-1.61 5.881 6.027-1.577c1.583.867 3.376 1.332 5.029 1.332 5.523 0 10-4.477 10-10 0-5.524-4.477-10-10-10zM17.65 15.65c-.1-.1-.3-.2-.5-.3s-.4-.2-.6-.2c-.2 0-.4 0-.6.1s-.3.2-.4.3c-.1.1-.2.3-.3.4s-.1.2-.2.4c-.1.2-.1.3-.1.5s0 .3.1.5c.1.1.2.2.3.3s.2.2.4.3c.2.1.4.1.6.1s.4 0 .6-.1c.2-.1.4-.2.5-.3s.3-.2.4-.4c.1-.1.2-.2.2-.4s.1-.3.1-.5c0-.2-.1-.3-.1-.5zM12.047 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-1.8-4.2c-.1-.1-.2-.2-.3-.2s-.2-.1-.3-.1c-.1 0-.2 0-.3.1s-.2.1-.2.2c-.1.1-.1.2-.1.3s0 .2.1.3c.1.1.1.2.2.2s.2.1.3.1c.1 0 .2 0 .3-.1s-.2-.1.3-.2c-.1-.1-.1-.2-.1-.3s0-.2-.1-.3z"></path>
                 </svg>
             </a>
         </div>
     </footer>
 
+    <!-- Botão Voltar ao Topo -->
+    <button id="back-to-top" aria-label="Voltar ao topo da página">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-up">
+            <line x1="12" y1="19" x2="12" y2="5"></line>
+            <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+    </button>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('search-input');
             const clearSearchButton = document.getElementById('clear-search');
-            const cards = document.querySelectorAll('.card');
+            // Seleciona tanto os cartões quanto as linhas da tabela para a busca
+            const searchableElements = document.querySelectorAll('.card, #useful-solutions-table tbody tr');
             const noResultsMessage = document.getElementById('no-results-message');
+            const backToTopButton = document.getElementById('back-to-top');
 
-            function filterCards() {
+            function filterElements() {
                 const searchTerm = searchInput.value.toLowerCase().trim();
-                let visibleCardsCount = 0;
+                let visibleElementsCount = 0;
 
-                cards.forEach(card => {
-                    const cardText = card.querySelector('a').textContent.toLowerCase();
-                    if (cardText.includes(searchTerm)) {
-                        card.style.display = 'block';
-                        // Adiciona a classe de animação apenas se o cartão for visível e não a tiver
-                        if (!card.classList.contains('fade-in')) {
-                            card.classList.add('fade-in');
+                searchableElements.forEach(element => {
+                    let elementText = '';
+                    let isCard = element.classList.contains('card');
+                    let isTableRow = element.tagName === 'TR';
+
+                    if (isCard) {
+                        elementText = element.querySelector('a').textContent.toLowerCase();
+                    } else if (isTableRow) {
+                        elementText = element.textContent.toLowerCase(); // Pega todo o texto da linha da tabela
+                    }
+
+                    if (elementText.includes(searchTerm)) {
+                        if (isCard) {
+                            element.style.display = 'block';
+                            if (!element.classList.contains('fade-in')) {
+                                element.classList.add('fade-in');
+                            }
+                        } else if (isTableRow) {
+                            element.style.display = 'table-row'; // Para exibir a linha da tabela corretamente
                         }
-                        visibleCardsCount++;
+                        visibleElementsCount++;
                     } else {
-                        card.style.display = 'none';
-                        // Remove a classe de animação quando o cartão é ocultado
-                        card.classList.remove('fade-in');
+                        element.style.display = 'none';
+                        if (isCard) {
+                            element.classList.remove('fade-in');
+                        }
                     }
                 });
 
-                if (visibleCardsCount === 0 && searchTerm !== '') {
+                if (visibleElementsCount === 0 && searchTerm !== '') {
                     noResultsMessage.classList.remove('hidden');
                 } else {
                     noResultsMessage.classList.add('hidden');
                 }
 
-                // Mostra ou esconde o botão de limpar pesquisa
                 if (searchTerm.length > 0) {
-                    clearSearchButton.style.display = 'flex'; // Use flex para centralizar o SVG
+                    clearSearchButton.style.display = 'flex';
                 } else {
                     clearSearchButton.style.display = 'none';
                 }
             }
 
-            searchInput.addEventListener('keyup', filterCards);
+            // Event listener para a barra de pesquisa
+            searchInput.addEventListener('keyup', filterElements);
 
+            // Event listener para o botão de limpar pesquisa
             clearSearchButton.addEventListener('click', function() {
-                searchInput.value = ''; // Limpa o campo de pesquisa
-                filterCards(); // Filtra para mostrar todos os cartões novamente
-                searchInput.focus(); // Coloca o foco de volta no campo de pesquisa
+                searchInput.value = '';
+                filterElements();
+                searchInput.focus();
             });
 
-            // Inicializa o estado do botão de limpar pesquisa ao carregar a página
-            filterCards();
+            // Lógica para mostrar/esconder o botão "Voltar ao Topo"
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.display = 'flex';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+
+            // Lógica para rolagem suave ao clicar no botão "Voltar ao Topo"
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Inicializa o estado da busca e do botão "Voltar ao Topo" ao carregar a página
+            filterElements();
+            if (window.scrollY > 300) {
+                backToTopButton.style.display = 'flex';
+            }
         });
     </script>
 </body>
