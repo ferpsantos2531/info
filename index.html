@@ -85,7 +85,7 @@
             Bem-vindo ao seu ambiente de estudo pessoal! Aqui você encontrará uma coleção organizada de estudos, infográficos e vídeos, todos gerados com o auxílio de Inteligência Artificial para enriquecer seu conhecimento. Utilize a barra de pesquisa abaixo para encontrar rapidamente o conteúdo desejado.
         </p>
 
-        <!-- Barra de Pesquisa -->
+        <!-- Barra de Pesquisa Global -->
         <div class="mb-10 max-w-2xl mx-auto">
             <label for="search-input" class="sr-only">Pesquisar conteúdo</label>
             <div class="relative">
@@ -219,18 +219,49 @@
             </div>
         </section>
 
-        <!-- Nova Seção de Soluções Úteis (Tabela) -->
-        <section aria-labelledby="solucoes-uteis-heading">
-            <h2 id="solucoes-uteis-heading" class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-400 pb-2">Soluções Úteis</h2>
+        <!-- Nova Seção de Caixa de Ferramentas (Tabela) -->
+        <section aria-labelledby="caixa-ferramentas-heading">
+            <h2 id="caixa-ferramentas-heading" class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-400 pb-2">Caixa de Ferramentas</h2>
+
+            <!-- Filtros da Tabela -->
+            <div class="mb-6 max-w-4xl mx-auto flex flex-wrap gap-4 items-end">
+                <div class="flex-1 min-w-[200px]">
+                    <label for="table-search-input" class="block text-sm font-medium text-gray-700">Pesquisar na Tabela</label>
+                    <input type="text" id="table-search-input" placeholder="Nome, descrição..."
+                           class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                           aria-label="Pesquisar ferramentas na tabela">
+                </div>
+                <div class="min-w-[120px]">
+                    <label for="paid-filter" class="block text-sm font-medium text-gray-700">Pago?</label>
+                    <select id="paid-filter" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            aria-label="Filtrar por status de pagamento">
+                        <option value="all">Todos</option>
+                        <option value="Pago">Pago</option>
+                        <option value="Gratuito">Gratuito</option>
+                        <option value="Gratuito (limitado)">Gratuito (limitado)</option>
+                    </select>
+                </div>
+                <div class="min-w-[150px]">
+                    <label for="classification-filter" class="block text-sm font-medium text-gray-700">Classificação</label>
+                    <select id="classification-filter" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            aria-label="Filtrar por classificação da ferramenta">
+                        <option value="all">Todas</option>
+                        <option value="Geração de Imagem">Geração de Imagem</option>
+                        <option value="Geração de Plano de Negócio">Geração de Plano de Negócio</option>
+                        <option value="Mapas Mentais">Mapas Mentais</option>
+                    </select>
+                </div>
+            </div>
+
             <div class="overflow-x-auto bg-white rounded-xl shadow-lg">
                 <table id="useful-solutions-table" class="min-w-full divide-y divide-gray-200 border-collapse">
                     <thead class="bg-blue-500 text-white">
                         <tr>
-                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider rounded-tl-xl">Nome da Ferramenta</th>
+                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider rounded-tl-xl">Solução</th>
                             <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Descrição</th>
                             <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Pago?</th>
                             <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Link</th>
-                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider rounded-tr-xl">Classificação (Finalidade)</th>
+                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider rounded-tr-xl">Classificação</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -332,68 +363,97 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('search-input');
+            const searchInput = document.getElementById('search-input'); // Global search
             const clearSearchButton = document.getElementById('clear-search');
-            // Seleciona tanto os cartões quanto as linhas da tabela para a busca
-            const searchableElements = document.querySelectorAll('.card, #useful-solutions-table tbody tr');
+            const tableSearchInput = document.getElementById('table-search-input'); // Table specific search
+            const paidFilter = document.getElementById('paid-filter'); // Table paid filter
+            const classificationFilter = document.getElementById('classification-filter'); // Table classification filter
+            
+            const cards = document.querySelectorAll('.card');
+            const tableRows = document.querySelectorAll('#useful-solutions-table tbody tr'); // Select only table rows
+            
             const noResultsMessage = document.getElementById('no-results-message');
             const backToTopButton = document.getElementById('back-to-top');
 
             function filterElements() {
-                const searchTerm = searchInput.value.toLowerCase().trim();
+                const globalSearchTerm = searchInput.value.toLowerCase().trim();
                 let visibleElementsCount = 0;
 
-                searchableElements.forEach(element => {
-                    let elementText = '';
-                    let isCard = element.classList.contains('card');
-                    let isTableRow = element.tagName === 'TR';
-
-                    if (isCard) {
-                        elementText = element.querySelector('a').textContent.toLowerCase();
-                    } else if (isTableRow) {
-                        elementText = element.textContent.toLowerCase(); // Pega todo o texto da linha da tabela
-                    }
-
-                    if (elementText.includes(searchTerm)) {
-                        if (isCard) {
-                            element.style.display = 'block';
-                            if (!element.classList.contains('fade-in')) {
-                                element.classList.add('fade-in');
-                            }
-                        } else if (isTableRow) {
-                            element.style.display = 'table-row'; // Para exibir a linha da tabela corretamente
+                // Filter cards based on global search
+                cards.forEach(card => {
+                    const cardText = card.querySelector('a').textContent.toLowerCase();
+                    if (cardText.includes(globalSearchTerm)) {
+                        card.style.display = 'block';
+                        if (!card.classList.contains('fade-in')) {
+                            card.classList.add('fade-in');
                         }
                         visibleElementsCount++;
                     } else {
-                        element.style.display = 'none';
-                        if (isCard) {
-                            element.classList.remove('fade-in');
-                        }
+                        card.style.display = 'none';
+                        card.classList.remove('fade-in');
                     }
                 });
 
-                if (visibleElementsCount === 0 && searchTerm !== '') {
+                // Filter table rows based on global search AND table-specific filters
+                const tableSearchTerm = tableSearchInput.value.toLowerCase().trim();
+                const paidFilterValue = paidFilter.value;
+                const classificationFilterValue = classificationFilter.value;
+
+                tableRows.forEach(row => {
+                    const solutionName = row.children[0].textContent.toLowerCase();
+                    const description = row.children[1].textContent.toLowerCase();
+                    const paidStatus = row.children[2].textContent.trim();
+                    const classification = row.children[4].textContent.trim();
+
+                    // Global search match for table row
+                    let globalMatch = (
+                        solutionName.includes(globalSearchTerm) ||
+                        description.includes(globalSearchTerm) ||
+                        paidStatus.toLowerCase().includes(globalSearchTerm) ||
+                        classification.toLowerCase().includes(globalSearchTerm)
+                    );
+
+                    // Table-specific filters match
+                    let tableSearchMatch = (solutionName.includes(tableSearchTerm) || description.includes(tableSearchTerm));
+                    let paidMatch = (paidFilterValue === 'all' || paidStatus.includes(paidFilterValue));
+                    let classificationMatch = (classificationFilterValue === 'all' || classification === classificationFilterValue);
+
+                    // Combine all conditions
+                    if (globalMatch && tableSearchMatch && paidMatch && classificationMatch) {
+                        row.style.display = 'table-row';
+                        visibleElementsCount++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+
+                // Update no results message based on overall visible elements
+                if (visibleElementsCount === 0 && globalSearchTerm !== '') {
                     noResultsMessage.classList.remove('hidden');
                 } else {
                     noResultsMessage.classList.add('hidden');
                 }
 
-                if (searchTerm.length > 0) {
+                // Show/hide clear search button for global search
+                if (globalSearchTerm.length > 0) {
                     clearSearchButton.style.display = 'flex';
                 } else {
                     clearSearchButton.style.display = 'none';
                 }
             }
 
-            // Event listener para a barra de pesquisa
+            // Event listeners for global search
             searchInput.addEventListener('keyup', filterElements);
-
-            // Event listener para o botão de limpar pesquisa
             clearSearchButton.addEventListener('click', function() {
                 searchInput.value = '';
                 filterElements();
                 searchInput.focus();
             });
+
+            // Event listeners for table-specific filters
+            tableSearchInput.addEventListener('keyup', filterElements);
+            paidFilter.addEventListener('change', filterElements);
+            classificationFilter.addEventListener('change', filterElements);
 
             // Lógica para mostrar/esconder o botão "Voltar ao Topo"
             window.addEventListener('scroll', function() {
