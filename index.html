@@ -220,10 +220,10 @@
         </section>
 
         <!-- Nova Seção de Caixa de Ferramentas (Tabela) -->
-        <section aria-labelledby="caixa-ferramentas-heading">
+        <section class="mb-12" aria-labelledby="caixa-ferramentas-heading">
             <h2 id="caixa-ferramentas-heading" class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-400 pb-2">Caixa de Ferramentas</h2>
 
-            <!-- Filtros da Tabela -->
+            <!-- Filtros da Tabela de Ferramentas -->
             <div class="mb-6 max-w-4xl mx-auto flex flex-wrap gap-4 items-end">
                 <div class="flex-1 min-w-[200px]">
                     <label for="table-search-input" class="block text-sm font-medium text-gray-700">Pesquisar na Tabela</label>
@@ -265,6 +265,7 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
+                        <!-- Apenas os 10 primeiros registros para otimização inicial -->
                         <tr class="table-row-hover">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">DALL·E 3 (OpenAI)</td>
                             <td class="px-6 py-4 text-sm text-gray-700">Geração de imagens por IA a partir de texto, altamente realista e criativa</td>
@@ -328,6 +329,134 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://coggle.it/" target="_blank" class="block w-full h-full">Coggle</a></td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Mapas Mentais</td>
                         </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Notion</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Espaço de trabalho tudo-em-um para notas, tarefas, wikis e bancos de dados.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Gratuito (pessoal) / Pago</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.notion.so/" target="_blank" class="block w-full h-full">Notion</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Produtividade</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Canva</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Plataforma de design gráfico para criar apresentações, posts de redes sociais e mais.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Gratuito / Pago</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.canva.com/" target="_blank" class="block w-full h-full">Canva</a></td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Design Gráfico</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Nova Seção de Banco de Ideias de Prompt (Tabela) -->
+        <section aria-labelledby="banco-prompts-heading">
+            <h2 id="banco-prompts-heading" class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-400 pb-2">Banco de Ideias de Prompt</h2>
+
+            <!-- Filtros da Tabela de Prompts -->
+            <div class="mb-6 max-w-5xl mx-auto flex flex-wrap gap-4 items-end">
+                <div class="flex-1 min-w-[200px]">
+                    <label for="prompt-search-input" class="block text-sm font-medium text-gray-700">Pesquisar Prompts</label>
+                    <input type="text" id="prompt-search-input" placeholder="Prompt, finalidade, exemplo..."
+                           class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                           aria-label="Pesquisar prompts na tabela">
+                </div>
+                <div class="min-w-[150px]">
+                    <label for="prompt-category-filter" class="block text-sm font-medium text-gray-700">Categoria</label>
+                    <select id="prompt-category-filter" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                            aria-label="Filtrar por categoria de prompt">
+                        <option value="all">Todas</option>
+                        <option value="Geração de Texto">Geração de Texto</option>
+                        <option value="Geração de Imagem">Geração de Imagem</option>
+                        <option value="Geração de Código">Geração de Código</option>
+                        <option value="Análise de Dados">Análise de Dados</option>
+                        <option value="Brainstorming">Brainstorming</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto bg-white rounded-xl shadow-lg">
+                <table id="prompt-ideas-table" class="min-w-full divide-y divide-gray-200 border-collapse">
+                    <thead class="bg-blue-500 text-white">
+                        <tr>
+                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider rounded-tl-xl">Prompt</th>
+                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Finalidade</th>
+                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Categoria</th>
+                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Exemplo de Uso</th>
+                            <th scope="col" class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider rounded-tr-xl">Observações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <!-- Apenas os 10 primeiros registros para otimização inicial -->
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Crie um roteiro detalhado para um vídeo do YouTube sobre "Os Benefícios da Meditação para a Produtividade".</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Gerar conteúdo de vídeo estruturado.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Texto</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">"Crie um roteiro detalhado para um vídeo do YouTube sobre 'Os Benefícios da Meditação para a Produtividade', incluindo introdução, 3 pontos principais, exemplos práticos e uma chamada para ação."</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Funciona melhor com instruções claras sobre a estrutura desejada.</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Gere 5 ideias de posts para redes sociais sobre a importância da cibersegurança para pequenas empresas.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Brainstorming e criação de conteúdo para redes sociais.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Texto</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">"Gere 5 ideias de posts para redes sociais (LinkedIn, Instagram) sobre a importância da cibersegurança para pequenas empresas, com emojis e hashtags relevantes."</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Especifique a plataforma para melhores resultados.</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Descreva uma imagem de um robô amigável ajudando um idoso a atravessar a rua em um cenário futurista e vibrante.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Gerar descrições detalhadas para ferramentas de IA de imagem.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Imagem</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">"Descreva uma imagem de um robô amigável ajudando um idoso a atravessar a rua em um cenário futurista e vibrante, estilo arte digital, cores neon, alta resolução."</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Adicione detalhes de estilo e qualidade para resultados específicos.</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Escreva um trecho de código Python que calcule a sequência de Fibonacci até o N-ésimo termo.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Gerar código para tarefas de programação.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Código</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">"Escreva um trecho de código Python que calcule a sequência de Fibonacci até o N-ésimo termo, usando uma função recursiva e com tratamento de erro para entradas negativas."</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Especifique a linguagem e requisitos adicionais (ex: tratamento de erro).</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Analise o seguinte conjunto de dados de vendas (forneça dados) e identifique as 3 principais tendências.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Extrair insights e tendências de dados.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Análise de Dados</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">"Analise o seguinte conjunto de dados de vendas: [dados de exemplo em formato JSON/CSV] e identifique as 3 principais tendências, incluindo possíveis causas e impactos."</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Requer que os dados sejam fornecidos no prompt.</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Gere ideias para um novo aplicativo móvel que resolva o problema de gerenciamento de tempo para estudantes universitários.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Brainstorming de ideias de produtos/soluções.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Brainstorming</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">"Gere 5 ideias inovadoras para um novo aplicativo móvel que resolva o problema de gerenciamento de tempo para estudantes universitários, incluindo funcionalidades principais e um nome para o app."</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Seja específico sobre o público-alvo e o problema a ser resolvido.</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Crie uma lista de 10 perguntas frequentes (FAQs) sobre o uso de IA na educação.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Gerar conteúdo de FAQ.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Texto</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">"Crie uma lista de 10 perguntas frequentes (FAQs) sobre o uso de IA na educação, com respostas concisas e claras."</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Pode ser usado para diversos tópicos de FAQ.</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Desenhe um logotipo minimalista para uma startup de energia renovável chamada "EcoSpark".</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Gerar ideias visuais para design.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Imagem</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">"Desenhe um logotipo minimalista para uma startup de energia renovável chamada 'EcoSpark', utilizando cores verdes e azuis, com um ícone que represente sustentabilidade e inovação."</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Ideal para ferramentas de IA de imagem.</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Explique o conceito de "computação quântica" para um público leigo em 300 palavras.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Simplificar conceitos complexos.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Texto</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">"Explique o conceito de 'computação quântica' para um público leigo em 300 palavras, utilizando analogias simples e evitando jargões técnicos."</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Defina o limite de palavras e o público-alvo.</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Crie uma função JavaScript que valide um endereço de e-mail.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Gerar funções de código específicas.</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">Geração de Código</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">"Crie uma função JavaScript que valide um endereço de e-mail usando expressões regulares e retorne true ou false."</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Especifique a linguagem e a funcionalidade esperada.</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -347,7 +476,7 @@
             <!-- WhatsApp Icon and Link -->
             <a href="https://wa.me/5531996080641" target="_blank" aria-label="Link para o WhatsApp de Fernando Santos" class="text-gray-600 hover:text-blue-600 transition-colors duration-200">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-whatsapp">
-                    <path d="M12.047 2.001c-5.524 0-10 4.477-10 10 0 1.956.567 3.805 1.554 5.412l-1.61 5.881 6.027-1.577c1.583.867 3.376 1.332 5.029 1.332 5.523 0 10-4.477 10-10 0-5.524-4.477-10-10-10zM17.65 15.65c-.1-.1-.3-.2-.5-.3s-.4-.2-.6-.2c-.2 0-.4 0-.6.1s-.3.2-.4.3c-.1.1-.2.3-.3.4s-.1.2-.2.4c-.1.2-.1.3-.1.5s0 .3.1.5c.1.1.2.2.3.3s.2.2.4.3c.2.1.4.1.6.1s.4 0 .6-.1c.2-.1.4-.2.5-.3s.3-.2.4-.4c.1-.1.2-.2.2-.4s.1-.3.1-.5c0-.2-.1-.3-.1-.5zM12.047 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-1.8-4.2c-.1-.1-.2-.2-.3-.2s-.2-.1-.3-.1c-.1 0-.2 0-.3.1s-.2.1-.2.2c-.1.1-.1.2-.1.3s0 .2.1.3c.1.1.1.2.2.2s.2.1.3.1c.1 0 .2 0 .3-.1s-.2-.1.3-.2c-.1-.1-.1-.2-.1-.3s0-.2-.1-.3z"></path>
+                    <path d="M12.047 2.001c-5.524 0-10 4.477-10 10 0 1.956.567 3.805 1.554 5.412l-1.61 5.881 6.027-1.577c1.583.867 3.376 1.332 5.029 1.332 5.523 0 10-4.477 10-10 0-5.524-4.477-10-10-10zM17.65 15.65c-.1-.1-.3-.2-.5-.3s-.4-.2-.6-.2c-.2 0-.4 0-.6.1s-.3.2-.4.3c-.1.1-.2.3-.3.4s-.1.2-.2.4c-.1.2-.1.3-.1.5s0 .3.1.5c.1.1.2.2.3.3s-.2.2.4.3c.2.1.4.1.6.1s.4 0 .6-.1c.2-.1.4-.2.5-.3s-.3-.2.4-.4c.1-.1.2-.2.2-.4s.1-.3.1-.5c0-.2-.1-.3-.1-.5zM12.047 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-1.8-4.2c-.1-.1-.2-.2-.3-.2s-.2-.1-.3-.1c-.1 0-.2 0-.3.1s-.2.1-.2.2c-.1.1-.1.2-.1.3s0 .2.1.3c.1.1.1.2.2.2s-.2.1.3.1c-.1 0 .2 0 .3-.1s-.2-.1.3-.2c-.1-.1-.1-.2-.1-.3s0-.2-.1-.3z"></path>
                 </svg>
             </a>
         </div>
@@ -365,12 +494,17 @@
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('search-input'); // Global search
             const clearSearchButton = document.getElementById('clear-search');
-            const tableSearchInput = document.getElementById('table-search-input'); // Table specific search
-            const paidFilter = document.getElementById('paid-filter'); // Table paid filter
-            const classificationFilter = document.getElementById('classification-filter'); // Table classification filter
+            
+            const tableSearchInput = document.getElementById('table-search-input'); // Table specific search (Caixa de Ferramentas)
+            const paidFilter = document.getElementById('paid-filter'); // Table paid filter (Caixa de Ferramentas)
+            const classificationFilter = document.getElementById('classification-filter'); // Table classification filter (Caixa de Ferramentas)
+            
+            const promptSearchInput = document.getElementById('prompt-search-input'); // Table specific search (Banco de Ideias de Prompt)
+            const promptCategoryFilter = document.getElementById('prompt-category-filter'); // Table category filter (Banco de Ideias de Prompt)
             
             const cards = document.querySelectorAll('.card');
-            const tableRows = document.querySelectorAll('#useful-solutions-table tbody tr'); // Select only table rows
+            const usefulSolutionsTableRows = document.querySelectorAll('#useful-solutions-table tbody tr'); // Select only table rows for Caixa de Ferramentas
+            const promptIdeasTableRows = document.querySelectorAll('#prompt-ideas-table tbody tr'); // Select only table rows for Banco de Ideias de Prompt
             
             const noResultsMessage = document.getElementById('no-results-message');
             const backToTopButton = document.getElementById('back-to-top');
@@ -394,12 +528,12 @@
                     }
                 });
 
-                // Filter table rows based on global search AND table-specific filters
+                // Filter "Caixa de Ferramentas" table rows based on global search AND table-specific filters
                 const tableSearchTerm = tableSearchInput.value.toLowerCase().trim();
                 const paidFilterValue = paidFilter.value;
                 const classificationFilterValue = classificationFilter.value;
 
-                tableRows.forEach(row => {
+                usefulSolutionsTableRows.forEach(row => {
                     const solutionName = row.children[0].textContent.toLowerCase();
                     const description = row.children[1].textContent.toLowerCase();
                     const paidStatus = row.children[2].textContent.trim();
@@ -427,6 +561,45 @@
                     }
                 });
 
+                // Filter "Banco de Ideias de Prompt" table rows based on global search AND table-specific filters
+                const promptTableSearchTerm = promptSearchInput.value.toLowerCase().trim();
+                const promptCategoryFilterValue = promptCategoryFilter.value;
+
+                promptIdeasTableRows.forEach(row => {
+                    const promptText = row.children[0].textContent.toLowerCase();
+                    const finalidade = row.children[1].textContent.toLowerCase();
+                    const categoria = row.children[2].textContent.trim();
+                    const exemploUso = row.children[3].textContent.toLowerCase();
+                    const observacoes = row.children[4].textContent.toLowerCase();
+
+                    // Global search match for prompt table row
+                    let globalMatch = (
+                        promptText.includes(globalSearchTerm) ||
+                        finalidade.includes(globalSearchTerm) ||
+                        categoria.toLowerCase().includes(globalSearchTerm) ||
+                        exemploUso.includes(globalSearchTerm) ||
+                        observacoes.includes(globalSearchTerm)
+                    );
+
+                    // Table-specific filters match
+                    let promptSearchMatch = (
+                        promptText.includes(promptTableSearchTerm) ||
+                        finalidade.includes(promptTableSearchTerm) ||
+                        exemploUso.includes(promptTableSearchTerm) ||
+                        observacoes.includes(promptTableSearchTerm)
+                    );
+                    let categoryMatch = (promptCategoryFilterValue === 'all' || categoria === promptCategoryFilterValue);
+
+                    // Combine all conditions
+                    if (globalMatch && promptSearchMatch && categoryMatch) {
+                        row.style.display = 'table-row';
+                        visibleElementsCount++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+
+
                 // Update no results message based on overall visible elements
                 if (visibleElementsCount === 0 && globalSearchTerm !== '') {
                     noResultsMessage.classList.remove('hidden');
@@ -450,10 +623,15 @@
                 searchInput.focus();
             });
 
-            // Event listeners for table-specific filters
+            // Event listeners for "Caixa de Ferramentas" table-specific filters
             tableSearchInput.addEventListener('keyup', filterElements);
             paidFilter.addEventListener('change', filterElements);
             classificationFilter.addEventListener('change', filterElements);
+
+            // Event listeners for "Banco de Ideias de Prompt" table-specific filters
+            promptSearchInput.addEventListener('keyup', filterElements);
+            promptCategoryFilter.addEventListener('change', filterElements);
+
 
             // Lógica para mostrar/esconder o botão "Voltar ao Topo"
             window.addEventListener('scroll', function() {
