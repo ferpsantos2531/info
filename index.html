@@ -203,7 +203,7 @@
                             <polygon points="5 3 19 12 5 21 5 3"></polygon>
                         </svg>
                     </div>
-                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">Vídeo de Exemplo 1</a>
+                    <a href="https://youtu.be/pGaMonPpf-s?si=4162WTMTg1_7LyqV" target="_blank" class="text-xl font-semibold text-gray-800 hover:text-blue-600 transition-colors duration-200">Palestra: Uma Nova Fronteira | Construindo a Empresa do Futuro – Jared Spataro</a>
                     <p class="text-gray-500 text-sm mt-2">Um vídeo interessante sobre o tema.</p>
                 </div>
                 <!-- Você pode adicionar mais cartões de vídeo aqui -->
@@ -249,6 +249,14 @@
                         <option value="Geração de Imagem">Geração de Imagem</option>
                         <option value="Geração de Plano de Negócio">Geração de Plano de Negócio</option>
                         <option value="Mapas Mentais">Mapas Mentais</option>
+                        <option value="Gestão de Projetos">Gestão de Projetos</option>
+                        <option value="Controle de Versão">Controle de Versão</option>
+                        <option value="Monitoramento">Monitoramento</option>
+                        <option value="Cloud Computing">Cloud Computing</option>
+                        <option value="Infraestrutura como Código">Infraestrutura como Código</option>
+                        <option value="Testes de API">Testes de API</option>
+                        <option value="Design UI/UX">Design UI/UX</option>
+                        <option value="Colaboração">Colaboração</option>
                     </select>
                 </div>
             </div>
@@ -265,7 +273,6 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <!-- Apenas os 10 primeiros registros para otimização inicial -->
                         <tr class="table-row-hover">
                             <td class="px-6 py-4 text-sm font-medium text-gray-900">DALL·E 3 (OpenAI)</td>
                             <td class="px-6 py-4 text-sm text-gray-700">Geração de imagens por IA a partir de texto, altamente realista e criativa</td>
@@ -336,12 +343,48 @@
                             <td class="px-6 py-4 text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.notion.so/" target="_blank" class="block w-full h-full">Notion</a></td>
                             <td class="px-6 py-4 text-sm text-gray-700">Produtividade</td>
                         </tr>
+                        <!-- Novas Ferramentas Cruciais para CTO -->
                         <tr class="table-row-hover">
-                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Canva</td>
-                            <td class="px-6 py-4 text-sm text-gray-700">Plataforma de design gráfico para criar apresentações, posts de redes sociais e mais.</td>
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Jira (Atlassian)</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Ferramenta líder para gestão de projetos ágéis, rastreamento de bugs e gestão de tarefas.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Pago</td>
+                            <td class="px-6 py-4 text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.atlassian.com/software/jira" target="_blank" class="block w-full h-full">Jira</a></td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Gestão de Projetos</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">GitHub</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Plataforma líder para controle de versão de código, colaboração e DevOps.</td>
                             <td class="px-6 py-4 text-sm text-gray-700">Gratuito / Pago</td>
-                            <td class="px-6 py-4 text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.canva.com/" target="_blank" class="block w-full h-full">Canva</a></td>
-                            <td class="px-6 py-4 text-sm text-gray-700">Design Gráfico</td>
+                            <td class="px-6 py-4 text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://github.com/" target="_blank" class="block w-full h-full">GitHub</a></td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Controle de Versão</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Datadog</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Plataforma de monitoramento e análise para aplicações, servidores e infraestrutura em nuvem.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Pago</td>
+                            <td class="px-6 py-4 text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.datadoghq.com/" target="_blank" class="block w-full h-full">Datadog</a></td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Monitoramento</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">AWS (Amazon Web Services)</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Maior provedor de serviços de computação em nuvem, oferecendo infraestrutura e serviços diversos.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Pago (pay-as-you-go)</td>
+                            <td class="px-6 py-4 text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://aws.amazon.com/" target="_blank" class="block w-full h-full">AWS</a></td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Cloud Computing</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Terraform (HashiCorp)</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Ferramenta de Infraestrutura como Código (IaC) para provisionar e gerenciar recursos em nuvem.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Gratuito / Pago</td>
+                            <td class="px-6 py-4 text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.terraform.io/" target="_blank" class="block w-full h-full">Terraform</a></td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Infraestrutura como Código</td>
+                        </tr>
+                        <tr class="table-row-hover">
+                            <td class="px-6 py-4 text-sm font-medium text-gray-900">Postman</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Plataforma colaborativa para desenvolvimento e teste de APIs.</td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Gratuito / Pago</td>
+                            <td class="px-6 py-4 text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200"><a href="https://www.postman.com/" target="_blank" class="block w-full h-full">Postman</a></td>
+                            <td class="px-6 py-4 text-sm text-gray-700">Testes de API</td>
                         </tr>
                     </tbody>
                 </table>
@@ -357,7 +400,7 @@
                 <div class="flex-1 min-w-[200px]">
                     <label for="prompt-search-input" class="block text-sm font-medium text-gray-700">Pesquisar Prompts</label>
                     <input type="text" id="prompt-search-input" placeholder="Prompt, finalidade, exemplo..."
-                           class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                           class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:ring-blue-500 focus:focus:border-blue-500 sm:text-sm"
                            aria-label="Pesquisar prompts na tabela">
                 </div>
                 <div class="min-w-[150px]">
